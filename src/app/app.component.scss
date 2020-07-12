@@ -1,15 +1,22 @@
 .page-container {
   display: grid;
-  grid-template-columns: 60px auto;
+  grid-template-columns: 150px auto;
   height: 100%;
   padding: 0px;
 
   .side-bar {
     background: #252223;
-
-    .nav-link {
-      color: #FFF;
-      font-size: 28px;
+    .nav-item .nav-link{
+      align-items: flex-end;
+      display: flex;
+      color: #FFFFFF;
+      font-size: 14px;
+    }
+    .nav-item .active {
+      color: #FFFFFF;
+    }
+    .nav-item :hover {
+      color: #007bff;
     }
   }
 

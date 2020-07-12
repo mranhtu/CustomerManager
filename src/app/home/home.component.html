@@ -12,13 +12,35 @@
 
 <div class="list-group users-list">
   <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+
     <div class="row">
-      <div class="col col-md-4 text-col">
-        <h5 class="mb-1">{{item.payload.doc.data().name}} {{item.payload.doc.data().surname}}</h5>
-        <small>Age: {{item.payload.doc.data().birth}}</small>
+      <div class="col col-md-3 text-col" style="display: grid;">
+        <h4><strong class="text-primary">{{item.payload.doc.data().name}}</strong></h4>
+        <label>Năm sinh:
+          <strong>{{item.payload.doc.data().birth}}</strong>
+        </label>
+        <label>Số điện thoại:
+          <strong>{{item.payload.doc.data().phone}}</strong>
+        </label>
+        <label>Địa chỉ:
+          <strong>{{item.payload.doc.data().address}}</strong>
+        </label>
+        <label>Ngày tạo:
+          <strong>{{item.payload.doc.data().create_date.seconds*1000 | date: 'dd-MM-yyyy HH:mm'}}</strong>
+        </label>
       </div>
-      <div class="col col-md-6">
-        <p>Số đo: {{item.payload.doc.data().so_do}}</p>
+      <div class="col col-md-5" style="display: grid;">
+        <p></p>
+        <label>Loại áo:
+          <strong>{{item.payload.doc.data().order_name}}</strong>
+        </label>
+        <label>Số đo:
+          <strong>{{item.payload.doc.data().so_do}}</strong>
+        </label>
+      </div>
+      <div class="col col-md-2" style="display: grid;">
+        <p></p>
+        <strong class="title-price">{{item.payload.doc.data().price | currency:'VN'}}</strong>
       </div>
       <div class="col col-md-2 actions-col">
         <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">

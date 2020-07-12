@@ -6,46 +6,63 @@
   </nav>
   <div class="page-content">
     <div class="row">
-      <div class="col col-md-4">
-        <img class="img-avatar" src="{{avatarLink}}">
-        <button mat-stroked-button class="change-img-button" color="primary">Change Image</button>
-      </div>
-
-      <div class="col col-md-8">
-
+      <div class="col col-md-12">
         <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
-
-          <div class="form-group">
-            <mat-form-field class="input-style">
-              <input matInput placeholder="Tên khách hàng" class="form-control" formControlName="name">
-            </mat-form-field>
-            <ng-container *ngFor="let validation of validationMessages.name">
-              <mat-error *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">{{validation.message}}</mat-error>
-            </ng-container>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field class="input-style">
-              <input matInput placeholder="Surname" class="form-control" formControlName="surname">
-            </mat-form-field>
-            <ng-container *ngFor="let validation of validationMessages.surname">
-              <mat-error *ngIf="exampleForm.get('surname').hasError(validation.type) && (exampleForm.get('surname').dirty || exampleForm.get('surname').touched)">{{validation.message}}</mat-error>
-            </ng-container>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field class="input-style">
-              <input matInput type="number" min="0" max="100" placeholder="Age" class="form-control" formControlName="age">
-            </mat-form-field>
-            <ng-container *ngFor="let validation of validationMessages.age">
-              <mat-error *ngIf="exampleForm.get('age').hasError(validation.type) && (exampleForm.get('age').dirty || exampleForm.get('age').touched)">{{validation.message}}</mat-error>
-            </ng-container>
-          </div>
-
-          <div class="row submit-button-container">
-            <div class="col-md-4">
-              <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!exampleForm.valid">Create</button>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Tên khách hàng(<span style="color: red;">*</span>)</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="Nhập tên khách hàng" class="form-control" formControlName="name">
+                <ng-container *ngFor="let validation of validationMessages.name">
+                  <span style="color: red" *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">{{validation.message}}</span>
+                </ng-container>
+              </div>
             </div>
+            <div class="col-sm-6">
+              <label>Số điện thoại(<span style="color: red;">*</span>)</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="Nhập số điện thoại" class="form-control" formControlName="phone">
+                <ng-container *ngFor="let validation of validationMessages.phone">
+                  <span style="color: red" *ngIf="exampleForm.get('phone').hasError(validation.type) && (exampleForm.get('phone').dirty || exampleForm.get('phone').touched)">{{validation.message}}</span>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Năm sinh/tuổi</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="1990" class="form-control" formControlName="birth">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Địa chỉ</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="Nhập địa chỉ" class="form-control" formControlName="address">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Loại áo</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="1 áo dài, 1 áo bà ba..." class="form-control" formControlName="orderName">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Giá tiền</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="Nhập giá tiền" class="form-control" formControlName="price" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Số đo (<span style="color: red;">*</span>)</label>
+              <div class="form-group row col-sm-12">
+                <textarea rows="4" cols="50" placeholder="Nhập số đo" class="form-control" formControlName="soDo"></textarea>
+                <ng-container *ngFor="let validation of validationMessages.soDo">
+                  <span style="color: red" *ngIf="exampleForm.get('soDo').hasError(validation.type) && (exampleForm.get('soDo').dirty || exampleForm.get('soDo').touched)">{{validation.message}}</span>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="row submit-button-container">
+            <button class="btn btn-primary" type="submit" [disabled]="!exampleForm.valid">Tạo số đo</button>
           </div>
 
         </form>

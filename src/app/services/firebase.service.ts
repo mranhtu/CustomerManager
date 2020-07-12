@@ -40,13 +40,7 @@ export class FirebaseService {
   }
 
 
-  createCustomer(value, avatar){
-    return this.db.collection('customers').add({
-      name: value.name,
-      nameToSearch: value.name.toLowerCase(),
-      surname: value.surname,
-      age: parseInt(value.age),
-      avatar: avatar
-    });
+  createCustomer(param){
+    return this.db.collection('customers').add(param);
   }
 }

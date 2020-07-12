@@ -21,6 +21,10 @@
       width: 100px;
       height: 100px;
     }
+    .list-group-item {
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
   }
   .text-col {
     margin: auto 0px;
@@ -35,5 +39,10 @@
     .icon {
       font-size: 20px;
     }
+  }
+  .title-price {
+    font-size: 19px;
+    font-weight: 500;
+    color: rgb(255, 52, 37);
   }
 }

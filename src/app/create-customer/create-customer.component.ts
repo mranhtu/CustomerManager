@@ -15,13 +15,13 @@ export class CreateCustomerComponent implements OnInit {
 
   validationMessages = {
     name: [
-      { type: 'required', message: 'Name is required.' }
+      { type: 'required', message: 'Tên khách hàng không được phép bỏ trống' }
     ],
-    surname: [
-      { type: 'required', message: 'Surname is required.' }
+    phone: [
+      { type: 'required', message: 'Điện thoại không được phép bỏ trống' }
     ],
-    age: [
-      { type: 'required', message: 'Age is required.' },
+    soDo: [
+      { type: 'required', message: 'Số đo không được phép bỏ trống' },
     ]
   };
 
@@ -32,8 +32,12 @@ export class CreateCustomerComponent implements OnInit {
   ) {
     this.exampleForm = this.fb.group({
       name: ['', Validators.required ],
-      surname: ['', Validators.required ],
-      age: ['', Validators.required ]
+      phone: ['', Validators.required ],
+      birth: [''],
+      address: [''],
+      orderName: [''],
+      price: [''],
+      soDo: ['', Validators.required ]
     });
   }
 
@@ -54,7 +58,6 @@ export class CreateCustomerComponent implements OnInit {
   // }
 
   resetFields(){
-    this.avatarLink = 'https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg';
     this.exampleForm = this.fb.group({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
@@ -63,13 +66,24 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.firebaseService.createCustomer(value, this.avatarLink)
-      .then(
-        res => {
+
+
+    const param = {
+      name: value.name,
+      phone: value.phone,
+      birth: value.birth,
+      address: value.address,
+      order_name: value.orderName,
+      price: value.price,
+      so_do: value.soDo,
+      create_date: new Date()
+    };
+    console.log(param);
+    this.firebaseService.createCustomer(param).then(res => {
           this.resetFields();
           this.router.navigate(['/home']);
         }
-      );
+    );
   }
 
 }

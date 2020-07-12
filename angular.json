@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "CustomerManager"
+  "defaultProject": "CustomerManager",
+  "cli": {
+    "analytics": false
+  }
 }
