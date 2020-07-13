@@ -11,7 +11,6 @@ import {FirebaseService} from '../services/firebase.service';
 export class CreateCustomerComponent implements OnInit {
 
   exampleForm: FormGroup;
-  avatarLink = 'https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg';
 
   validationMessages = {
     name: [
@@ -76,7 +75,8 @@ export class CreateCustomerComponent implements OnInit {
       order_name: value.orderName,
       price: value.price,
       so_do: value.soDo,
-      create_date: new Date()
+      create_date: new Date(),
+      status: 1
     };
     console.log(param);
     this.firebaseService.createCustomer(param).then(res => {

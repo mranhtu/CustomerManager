@@ -21,17 +21,25 @@ export class FirebaseService {
     return this.db.collection('customers').doc(userKey).set(value);
   }
 
-  deleteUser(userKey){
-    return this.db.collection('customers').doc(userKey).delete();
+  deleteCustomer(key, value){
+    return this.db.collection('customers').doc(key).set(value);
   }
 
   getCustomers(){
-    return this.db.collection('customers').snapshotChanges();
+    return this.db.collection('customers', ref => ref.where('status', '==', 1)).snapshotChanges();
   }
 
-  searchCustomers(searchValue){
+  searchCustomersByPhone(searchValue){
     return this.db.collection('customers',ref => ref.where('phone', '>=', searchValue)
-      .where('phone', '<=', searchValue + '\uf8ff'))
+      .where('phone', '<=', searchValue + '\uf8ff')
+      .where('status', '==', 1))
+      .snapshotChanges();
+  }
+
+  searchCustomersByName(searchValue){
+    return this.db.collection('customers',ref => ref.where('name', '>=', searchValue)
+      .where('name', '<=', searchValue + '\uf8ff')
+      .where('status', '==', 1))
       .snapshotChanges();
   }
 

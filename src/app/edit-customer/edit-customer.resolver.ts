@@ -18,6 +18,6 @@ export class EditCustomerResolver implements Resolve<any> {
             resolve(data);
           }
         );
-    })
+    });
   }
 }

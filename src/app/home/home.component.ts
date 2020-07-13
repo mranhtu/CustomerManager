@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   ageValue = 0;
   searchValue = '';
+  searchNameValue = '';
   items: Array<any>;
   ageFilteredItems: Array<any>;
   nameFilteredItems: Array<any>;
@@ -33,9 +34,18 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  searchByPhone(){
+    const value = this.searchValue.toLowerCase();
+    this.firebaseService.searchCustomersByPhone(value)
+      .subscribe(result => {
+        this.nameFilteredItems = result;
+        this.items = this.combineLists(result, this.ageFilteredItems);
+      });
+  }
+
   searchByName(){
     const value = this.searchValue.toLowerCase();
-    this.firebaseService.searchCustomers(value)
+    this.firebaseService.searchCustomersByName(value)
       .subscribe(result => {
         this.nameFilteredItems = result;
         this.items = this.combineLists(result, this.ageFilteredItems);
