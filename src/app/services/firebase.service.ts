@@ -35,12 +35,20 @@ export class FirebaseService {
       .where('status', '==', 1))
       .snapshotChanges();
   }
+  //
+  // searchCustomersByName(searchValue){
+  //   return this.db.collection('customers',ref => ref.where('name', '>=', searchValue)
+  //     .where('name', '<=', searchValue + '\uf8ff')
+  //     .where('status', '==', 1))
+  //     .snapshotChanges();
+  // }
 
-  searchCustomersByName(searchValue){
-    return this.db.collection('customers',ref => ref.where('name', '>=', searchValue)
-      .where('name', '<=', searchValue + '\uf8ff')
-      .where('status', '==', 1))
-      .snapshotChanges();
+  searchCustomersByName(start, end) {
+    return this.db.collection('customers', ref => ref.limit(4).orderBy('name').startAt(start).endAt(end)).valueChanges();
+  }
+
+  getAllByName() {
+    return this.db.collection('customers', ref => ref.orderBy('name')).valueChanges();
   }
 
   searchCustomersByAge(value){
