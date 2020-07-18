@@ -36,7 +36,19 @@ export class CreateCustomerComponent implements OnInit {
       address: [''],
       orderName: [''],
       price: [''],
-      soDo: ['', Validators.required ]
+      daiAo: [''],
+      daiTay: [''],
+      bapTay: [''],
+      vongNguc: [''],
+      haNguc: [''],
+      vongEo: [''],
+      haEo: [''],
+      vongMong: [''],
+      daiQuan: [''],
+      vongCo: [''],
+      kieuCo: [''],
+      note: [''],
+
     });
   }
 
@@ -74,7 +86,18 @@ export class CreateCustomerComponent implements OnInit {
       address: value.address,
       order_name: value.orderName,
       price: value.price,
-      so_do: value.soDo,
+      daiAo: value.daiAo,
+      daiTay: value.daiTay,
+      bapTay: value.bapTay,
+      vongNguc: value.vongNguc,
+      haNguc: value.haNguc,
+      vongEo: value.vongEo,
+      haEo: value.haEo,
+      vongMong: value.vongMong,
+      daiQuan: value.daiQuan,
+      vongCo: value.vongCo,
+      kieuCo: value.kieuCo,
+      note: value.note,
       create_date: new Date(),
       status: 1
     };

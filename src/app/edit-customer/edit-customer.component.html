@@ -51,13 +51,79 @@
                 <input placeholder="Nhập giá tiền" class="form-control" formControlName="price" type="number" min="0">
               </div>
             </div>
-            <div class="col-sm-6">
-              <label>Số đo (<span style="color: red;">*</span>)</label>
+            <hr style="width: 100%"/>
+            <div class="col-sm-3">
+              <label>Dài áo</label>
               <div class="form-group row col-sm-12">
-                <textarea rows="4" cols="50" placeholder="Nhập số đo" class="form-control" formControlName="soDo"></textarea>
-                <ng-container *ngFor="let validation of validationMessages.soDo">
-                  <span style="color: red" *ngIf="exampleForm.get('soDo').hasError(validation.type) && (exampleForm.get('soDo').dirty || exampleForm.get('soDo').touched)">{{validation.message}}</span>
-                </ng-container>
+                <input class="form-control" formControlName="daiAo" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Dài tay</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="daiTay" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Bắp tay</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="bapTay" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Vòng ngực</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="vongNguc" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Hạ ngực</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="haNguc" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Eo</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="vongEo" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Hạ eo</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="haEo" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Mông</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="vongMong" type="number" min="0">
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <label>Dài quần</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="daiQuan" type="number" min="0">
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <label>Cổ</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="vongCo" type="number" min="0">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Kiểu cổ</label>
+              <div class="form-group row col-sm-12">
+                <input class="form-control" formControlName="kieuCo" type="text">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Chú ý</label>
+              <div class="form-group row col-sm-12">
+                <input placeholder="Nhập thêm chú ý về khách" class="form-control" formControlName="note" type="text">
               </div>
             </div>
           </div>

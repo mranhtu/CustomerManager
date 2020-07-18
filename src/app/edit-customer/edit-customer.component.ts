@@ -19,9 +19,6 @@ export class EditCustomerComponent implements OnInit {
     phone: [
       { type: 'required', message: 'Điện thoại không được phép bỏ trống' }
     ],
-    soDo: [
-      { type: 'required', message: 'Số đo không được phép bỏ trống' },
-    ]
   };
 
   constructor(public firebaseService: FirebaseService,
@@ -48,7 +45,18 @@ export class EditCustomerComponent implements OnInit {
       address: [this.item.address],
       orderName: [this.item.order_name],
       price: [this.item.price],
-      soDo: [this.item.so_do, Validators.required ]
+      daiAo: [this.item.daiAo],
+      daiTay: [this.item.daiTay],
+      bapTay: [this.item.bapTay],
+      vongNguc: [this.item.vongNguc],
+      haNguc: [this.item.haNguc],
+      vongEo: [this.item.vongEo],
+      haEo: [this.item.haEo],
+      vongMong: [this.item.vongMong],
+      daiQuan: [this.item.daiQuan],
+      vongCo: [this.item.vongCo],
+      kieuCo: [this.item.kieuCo],
+      note: [this.item.note],
     });
   }
 
@@ -60,11 +68,21 @@ export class EditCustomerComponent implements OnInit {
       address: value.address,
       order_name: value.orderName,
       price: value.price,
-      so_do: value.soDo,
+      daiAo: value.daiAo,
+      daiTay: value.daiTay,
+      bapTay: value.bapTay,
+      vongNguc: value.vongNguc,
+      haNguc: value.haNguc,
+      vongEo: value.vongEo,
+      haEo: value.haEo,
+      vongMong: value.vongMong,
+      daiQuan: value.daiQuan,
+      vongCo: value.vongCo,
+      kieuCo: value.kieuCo,
+      note: value.note,
       create_date: new Date(),
       status: 1
     };
-    console.log("submit à")
     this.firebaseService.updateUser(this.item.id, param).then(
         res => {
           this.router.navigate(['/home']);
@@ -73,7 +91,7 @@ export class EditCustomerComponent implements OnInit {
   }
 
   confirmDialog(value) {
-    if (confirm('Are you sure to delete ')) {
+    if (confirm('Bạn có chắc muốn xóa? ')) {
       this.delete(value);
     }
   }
@@ -86,7 +104,18 @@ export class EditCustomerComponent implements OnInit {
       address: value.address,
       order_name: value.orderName,
       price: value.price,
-      so_do: value.soDo,
+      daiAo: value.daiAo,
+      daiTay: value.daiTay,
+      bapTay: value.bapTay,
+      vongNguc: value.vongNguc,
+      haNguc: value.haNguc,
+      vongEo: value.vongEo,
+      haEo: value.haEo,
+      vongMong: value.vongMong,
+      daiQuan: value.daiQuan,
+      vongCo: value.vongCo,
+      kieuCo: value.kieuCo,
+      note: value.note,
       create_date: new Date(),
       status: 0
     };

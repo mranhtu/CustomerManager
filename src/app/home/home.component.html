@@ -36,7 +36,16 @@
           <strong>{{item.payload.doc.data().order_name}}</strong>
         </label>
         <label>Số đo:
-          <strong>{{item.payload.doc.data().so_do}}</strong>
+          <strong>Dài áo: {{item.payload.doc.data().daiAo || "..."}} | Dài tay: {{item.payload.doc.data().daiTay || "..."}} |
+            Bắp tay: {{item.payload.doc.data().bapTay || "..."}} | Ngực: {{item.payload.doc.data().vongNguc || "..."}} |
+            Hạ ngực: {{item.payload.doc.data().haNguc || "..."}} | Eo: {{item.payload.doc.data().vongEo || "..."}} |
+            Hạ eo: {{item.payload.doc.data().haEo || "..."}} | Mông: {{item.payload.doc.data().vongMong || "..."}} |
+            Cổ: {{item.payload.doc.data().vongCo || "..."}} | Kiểu cổ: {{item.payload.doc.data().kieuCo || "..."}} |
+            Dài quần: {{item.payload.doc.data().daiQuan || "..."}}
+          </strong>
+        </label>
+        <label>Chú ý:
+          <strong>{{item.payload.doc.data().note}}</strong>
         </label>
       </div>
       <div class="col col-md-2" style="display: grid;">
