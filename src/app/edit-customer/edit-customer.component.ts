@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-customer',
@@ -24,7 +25,8 @@ export class EditCustomerComponent implements OnInit {
   constructor(public firebaseService: FirebaseService,
               private route: ActivatedRoute,
               private fb: FormBuilder,
-              private router: Router) {}
+              private router: Router,
+              private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(routeData => {
@@ -85,6 +87,7 @@ export class EditCustomerComponent implements OnInit {
     };
     this.firebaseService.updateUser(this.item.id, param).then(
         res => {
+          this.toastr.success('Thành công', 'Chỉnh sửa khách hàng thành công');
           this.router.navigate(['/home']);
         }
       );
@@ -121,6 +124,7 @@ export class EditCustomerComponent implements OnInit {
     };
     this.firebaseService.deleteCustomer(this.item.id, param).then(
         res => {
+          this.toastr.success('Thành công', 'Xoá khách hàng thành công');
           this.router.navigate(['/home']);
         },
         err => {

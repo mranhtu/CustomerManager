@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-customer',
@@ -27,7 +28,8 @@ export class CreateCustomerComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    public firebaseService: FirebaseService
+    public firebaseService: FirebaseService,
+    private toastr: ToastrService
   ) {
     this.exampleForm = this.fb.group({
       name: ['', Validators.required ],
@@ -104,6 +106,7 @@ export class CreateCustomerComponent implements OnInit {
     console.log(param);
     this.firebaseService.createCustomer(param).then(res => {
           this.resetFields();
+      this.toastr.success('Thành công', 'Thêm mới khách hàng thành công');
           this.router.navigate(['/home']);
         }
     );

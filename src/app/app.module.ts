@@ -17,6 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {EditCustomerResolver} from './edit-customer/edit-customer.resolver';
 import {FirebaseService} from './services/firebase.service';
 import {MatIconModule} from '@angular/material/icon';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,12 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatIconModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 2500,
+        positionClass: 'toast-bottom-right',
+      }
+    )
   ],
   providers: [FirebaseService, EditCustomerResolver],
   bootstrap: [AppComponent]
