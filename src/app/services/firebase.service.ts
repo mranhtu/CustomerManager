@@ -43,8 +43,9 @@ export class FirebaseService {
   //     .snapshotChanges();
   // }
 
-  searchCustomersByName(start, end) {
-    return this.db.collection('customers', ref => ref.limit(4).orderBy('name').startAt(start).endAt(end)).valueChanges();
+  searchCustomersByName(keyWords) {
+    return this.db.collection('customers', ref => ref.where('querySearch', 'array-contains', keyWords.toLocaleLowerCase())
+    ).snapshotChanges();
   }
 
   getAllByName() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { Router, Params } from '@angular/router';
-import {Observable, Subject, combineLatest} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -17,28 +17,14 @@ export class HomeComponent implements OnInit {
   ageFilteredItems: Array<any>;
   nameFilteredItems: Array<any>;
 
-  //search by name
-  startAt = new Subject();
-  endAt = new Subject();
-
-  startObs = this.startAt.asObservable();
-  endObs = this.endAt.asObservable();
-
-  obs = new Observable();
-
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    public db: AngularFirestore
   ) { }
 
   ngOnInit() {
     this.getData();
-    combineLatest(this.startObs, this.endObs).subscribe((value) => {
-      this.firebaseService.searchCustomersByName(value[0].toString().toLocaleLowerCase(), value[1].toString().toLocaleLowerCase()).subscribe((res) => {
-        // this.items = res;
-        console.log(res)
-      })
-    })
   }
 
   getData(){
@@ -59,16 +45,12 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  searchByName($event){
+  async searchByName($event) {
     let querySearch = $event.target.value;
-    this.startAt.next(querySearch);
-    this.endAt.next(querySearch + "\uf8ff");
-    // const value = this.searchValue.toLowerCase();
-    // this.firebaseService.searchCustomersByName(value)
-    //   .subscribe(result => {
-    //     this.nameFilteredItems = result;
-    //     this.items = this.combineLists(result, this.ageFilteredItems);
-    //   });
+    this.firebaseService.searchCustomersByName(querySearch)
+      .subscribe(result => {
+        this.items = this.combineLists(result, this.ageFilteredItems);
+      });
   }
 
   combineLists(a, b){
@@ -95,6 +77,5 @@ export class HomeComponent implements OnInit {
   viewDetails(item){
     this.router.navigate(['/details/' + item.payload.doc.id]);
   }
-
 
 }

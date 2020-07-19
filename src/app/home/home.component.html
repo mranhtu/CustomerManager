@@ -6,8 +6,12 @@
       <div class="input-group-append">
         <span class="input-group-text"><mat-icon aria-hidden="false">search</mat-icon></span>
       </div>
+    </div>
+  </div>
+  <div class="col-md-4 offset-md-1">
+    <div class="input-group">
       <input type="text" class="form-control" [(ngModel)]="searchNameValue"
-             [ngModelOptions]="{standalone: true}" placeholder="Nhập tên khách hàng..." (keydown)="searchByName($event)">
+             [ngModelOptions]="{standalone: true}" placeholder="Nhập tên khách hàng..." (keyup)="searchByName($event)">
       <div class="input-group-append">
         <span class="input-group-text"><mat-icon aria-hidden="false">search</mat-icon></span>
       </div>

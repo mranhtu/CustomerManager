@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 import {ToastrService} from 'ngx-toastr';
+import {StringUtils} from '../services/const';
 
 @Component({
   selector: 'app-create-customer',
@@ -29,7 +30,8 @@ export class CreateCustomerComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     public firebaseService: FirebaseService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private stringUtils: StringUtils
   ) {
     this.exampleForm = this.fb.group({
       name: ['', Validators.required ],
@@ -57,19 +59,6 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(AvatarDialogComponent, {
-  //     height: '400px',
-  //     width: '400px',
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(result){
-  //       this.avatarLink = result.link;
-  //     }
-  //   });
-  // }
-
   resetFields(){
     this.exampleForm = this.fb.group({
       name: new FormControl('', Validators.required),
@@ -79,7 +68,7 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   onSubmit(value){
-
+    const keywordFullName = this.stringUtils.createKeywords(value.name);
 
     const param = {
       name: value.name,
@@ -101,6 +90,7 @@ export class CreateCustomerComponent implements OnInit {
       kieuCo: value.kieuCo,
       note: value.note,
       create_date: new Date(),
+      querySearch: keywordFullName,
       status: 1
     };
     console.log(param);

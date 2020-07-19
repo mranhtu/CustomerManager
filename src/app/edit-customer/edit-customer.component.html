@@ -1,6 +1,8 @@
 <div class="edit-page">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page" (click)="cancel()">Home</li>
+      <mat-icon aria-hidden="false">keyboard_arrow_right</mat-icon>
       <li class="breadcrumb-item active" aria-current="page">Thay đổi thông tin khách hàng</li>
     </ol>
   </nav>
@@ -129,10 +131,10 @@
           </div>
           <div class="row submit-button-container">
             <div class="col-md-4">
-              <button class="btn btn-primary" type="submit" [disabled]="!exampleForm.valid">Lưu</button>
+              <button class="btn btn-primary btn-lg" type="submit" [disabled]="!exampleForm.valid">Lưu</button>
             </div>
             <div class="col-md-4">
-              <button class="btn btn-danger" type="button" (click)="confirmDialog(exampleForm.value)">Xoá</button>
+              <button class="btn btn-danger btn-lg" type="button" (click)="confirmDialog(exampleForm.value)">Xoá</button>
             </div>
 
           </div>

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {StringUtils} from '../services/const';
 
 @Component({
   selector: 'app-edit-customer',
@@ -26,7 +27,8 @@ export class EditCustomerComponent implements OnInit {
               private route: ActivatedRoute,
               private fb: FormBuilder,
               private router: Router,
-              private toastr: ToastrService) {}
+              private toastr: ToastrService,
+              private stringUtils: StringUtils) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(routeData => {
@@ -63,6 +65,9 @@ export class EditCustomerComponent implements OnInit {
   }
 
   onSubmit(value){
+    const keywordFullName = this.stringUtils.createKeywords(value.name);
+
+
     const param = {
       name: value.name,
       phone: value.phone,
@@ -83,6 +88,7 @@ export class EditCustomerComponent implements OnInit {
       kieuCo: value.kieuCo,
       note: value.note,
       create_date: new Date(),
+      querySearch: keywordFullName,
       status: 1
     };
     this.firebaseService.updateUser(this.item.id, param).then(
@@ -100,6 +106,8 @@ export class EditCustomerComponent implements OnInit {
   }
 
   delete(value){
+    const keywordFullName = this.stringUtils.createKeywords(value.name);
+
     const param = {
       name: value.name,
       phone: value.phone,
@@ -120,6 +128,7 @@ export class EditCustomerComponent implements OnInit {
       kieuCo: value.kieuCo,
       note: value.note,
       create_date: new Date(),
+      querySearch: keywordFullName,
       status: 0
     };
     this.firebaseService.deleteCustomer(this.item.id, param).then(
