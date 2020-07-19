@@ -101,5 +101,7 @@ export class CreateCustomerComponent implements OnInit {
         }
     );
   }
-
+  cancel(){
+    this.router.navigate(['/home']);
+  }
 }
